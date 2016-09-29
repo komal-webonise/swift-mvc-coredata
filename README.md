@@ -1,1 +1,2 @@
 # swift-mvc-coredata
+readme
