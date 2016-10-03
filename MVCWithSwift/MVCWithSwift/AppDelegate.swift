@@ -17,19 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-//        let storyboard = UIStoryboard(name: "ListProductsViewController", bundle: nil)
-//        let listProductsViewController = storyboard.instantiateViewControllerWithIdentifier("ListProductsViewController") as! ListProductsViewController
-//        let navigationController = UINavigationController(rootViewController: listProductsViewController)
-//        //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//        UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:LIST_PRODUCTS_VIEW_CONTROLLER];
-//        UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:viewController];
-//        window = [[UIWindow alloc]init];
-//        [window setRootViewController:navigationController];
-//        return YES;
-//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//        let navigationController = storyboard.instantiateViewControllerWithIdentifier("ListProductsViewController")
-//        
-//        self.window?.rootViewController = navigationController
         
         return true
     }

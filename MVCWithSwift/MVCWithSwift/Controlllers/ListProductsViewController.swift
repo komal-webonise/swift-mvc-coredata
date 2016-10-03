@@ -8,18 +8,22 @@
 
 import UIKit
 import CoreData
+
 class ListProductsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
     @IBOutlet var tableViewProducts: UITableView!
     var arrayProducts : [Products] = []
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let addProduct = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ListProductsViewController.addProducts))
+        let addProduct = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ListProductsViewController.navigateToAddProductsScreen))
         self.navigationItem.rightBarButtonItem = addProduct
     }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let managedObjectContext = self.managedObjectContext()
-        let fetchRequest = NSFetchRequest(entityName : Constants.ENTITY_PRODUCTS)
+        let fetchRequest = NSFetchRequest(entityName : Constants.Entity.ENTITY_PRODUCTS)
         do{
             self.arrayProducts = try (managedObjectContext.executeFetchRequest(fetchRequest)) as! [Products]
             self.tableViewProducts.reloadData()
@@ -28,20 +32,15 @@ class ListProductsViewController: UIViewController,UITableViewDelegate,UITableVi
             fatalError("Failed to fetch data: \(error)")
         }
     }
-    func managedObjectContext() -> NSManagedObjectContext {
-        var context: NSManagedObjectContext!
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        if (delegate.performSelector(#selector(managedObjectContext)) != nil) {
-            context = delegate.managedObjectContext
-        }
-        return context
-    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func addProducts() {
-        let addProductViewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constants.ADD_PRODUCT_VIEW_CONTROLLER) as! AddProductViewController
+    /** Navigates to next screen which enables to add one more product
+    */
+    func navigateToAddProductsScreen() {
+        let addProductViewController = self.storyboard?.instantiateViewControllerWithIdentifier(Constants.StoryBoardID.ADD_PRODUCT_VIEW_CONTROLLER) as! AddProductViewController
         self.navigationController?.pushViewController(addProductViewController, animated: true)
     }
     
@@ -54,11 +53,11 @@ class ListProductsViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let customCellIdentifier = Constants.TABLE_VIEW_CELL ;
-        var cell = tableViewProducts.dequeueReusableCellWithIdentifier(customCellIdentifier) as? TableViewCell
+        let customCellIdentifier = Constants.StoryBoardID.TABLE_VIEW_CELL ;
+        var cell = tableViewProducts.dequeueReusableCellWithIdentifier(customCellIdentifier) as? CustomProductViewCell
         if cell == nil {
             var nib = NSBundle.mainBundle().loadNibNamed(customCellIdentifier, owner: self, options: nil)
-            cell = nib[0] as? TableViewCell
+            cell = nib[0] as? CustomProductViewCell
         }
         let productDetail = self.arrayProducts[indexPath.row]
         cell?.labelProductName.text = productDetail.productName;
@@ -66,13 +65,12 @@ class ListProductsViewController: UIViewController,UITableViewDelegate,UITableVi
         return cell!
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
-        let context = self.managedObjectContext()
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
         case .Delete:
-            context.deleteObject(self.arrayProducts[indexPath.row])
+            managedObjectContext.deleteObject(self.arrayProducts[indexPath.row])
             do{
-                try  context.save()
+                try  managedObjectContext.save()
             }
             catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
@@ -85,10 +83,9 @@ class ListProductsViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        let productDetail = self.arrayProducts[indexPath.row]
-        let addProductViewController: AddProductViewController? = self.storyboard?.instantiateViewControllerWithIdentifier(Constants.ADD_PRODUCT_VIEW_CONTROLLER) as? AddProductViewController
-        addProductViewController?.show = true
-        addProductViewController?.nsManagedObject = productDetail
+        let addProductViewController: AddProductViewController? = self.storyboard?.instantiateViewControllerWithIdentifier(Constants.StoryBoardID.ADD_PRODUCT_VIEW_CONTROLLER) as? AddProductViewController
+        addProductViewController?.showOrUpdateDetails = true
+        addProductViewController?.row = indexPath.row
         self.navigationController?.pushViewController(addProductViewController!, animated: true)
     }
 

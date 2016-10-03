@@ -69,22 +69,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUQ-TP-ffZ">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUQ-TP-ffZ">
                                 <rect key="frame" x="59" y="104" width="219" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4CW-VD-26y"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O6X-tO-4wK">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O6X-tO-4wK">
                                 <rect key="frame" x="59" y="172" width="219" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4Z-HI-fzz">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4Z-HI-fzz">
                                 <rect key="frame" x="59" y="237" width="219" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daY-s2-0Bm">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daY-s2-0Bm">
                                 <rect key="frame" x="106" y="322" width="119" height="56"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.97722739359999999" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add">
@@ -96,6 +99,22 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UUQ-TP-ffZ" firstAttribute="top" secondItem="tSb-2I-1dC" secondAttribute="bottom" constant="84" id="00H-7b-2AD"/>
+                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="top" secondItem="O6X-tO-4wK" secondAttribute="bottom" constant="35" id="BH7-aD-QsE"/>
+                            <constraint firstItem="O6X-tO-4wK" firstAttribute="top" secondItem="UUQ-TP-ffZ" secondAttribute="bottom" constant="38" id="Fqz-Vk-1Mx"/>
+                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="height" secondItem="O6X-tO-4wK" secondAttribute="height" id="Id7-Ck-IjN"/>
+                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="leading" secondItem="O6X-tO-4wK" secondAttribute="leading" id="PAX-Vo-W8D"/>
+                            <constraint firstItem="O6X-tO-4wK" firstAttribute="height" secondItem="UUQ-TP-ffZ" secondAttribute="height" id="VRt-w4-2sk"/>
+                            <constraint firstItem="daY-s2-0Bm" firstAttribute="trailing" secondItem="h4Z-HI-fzz" secondAttribute="trailing" id="X5z-3e-eYK"/>
+                            <constraint firstItem="daY-s2-0Bm" firstAttribute="leading" secondItem="h4Z-HI-fzz" secondAttribute="leading" id="c4q-ZP-ApD"/>
+                            <constraint firstAttribute="trailing" secondItem="UUQ-TP-ffZ" secondAttribute="trailing" constant="42" id="dXa-Zr-Dmo"/>
+                            <constraint firstItem="UUQ-TP-ffZ" firstAttribute="leading" secondItem="kbZ-P4-BK4" secondAttribute="leading" constant="59" id="hHb-Ca-rpF"/>
+                            <constraint firstItem="O6X-tO-4wK" firstAttribute="leading" secondItem="UUQ-TP-ffZ" secondAttribute="leading" id="lLk-04-8Qy"/>
+                            <constraint firstItem="O6X-tO-4wK" firstAttribute="trailing" secondItem="UUQ-TP-ffZ" secondAttribute="trailing" id="nCh-Lu-9IM"/>
+                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="trailing" secondItem="O6X-tO-4wK" secondAttribute="trailing" id="oby-CD-5zL"/>
+                            <constraint firstItem="daY-s2-0Bm" firstAttribute="top" secondItem="h4Z-HI-fzz" secondAttribute="bottom" constant="55" id="zNY-GG-ehZ"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>

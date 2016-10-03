@@ -13,30 +13,42 @@ class AddProductViewController: UIViewController {
     @IBOutlet var textFieldProductPrice: UITextField!
     @IBOutlet var textFieldProductCategory: UITextField!
     @IBOutlet var buttonSaveOrUpdate: UIButton!
-    var show: Bool?
-    var nsManagedObject: NSManagedObject?
+    var showOrUpdateDetails: Bool = false
+    var row: Int = 0
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if((self.show) != nil){
-            self.buttonSaveOrUpdate.setTitle(Constants.SHOW_TEXT, forState: .Normal)
+        if (self.showOrUpdateDetails) {
+            self.buttonSaveOrUpdate.setTitle(Constants.showButtonText.SHOW_TEXT, forState: .Normal)
             self.displayProductDetails()
         }
     }
     
-    func displayProductDetails(){
-        textFieldProductName.text = self.nsManagedObject?.valueForKey(Constants.ATTRIBUTE_PRODUCT_NAME) as? String
-        textFieldProductPrice.text = String((self.nsManagedObject?.valueForKey(Constants.ATTRIBUTE_PRODUCT_PRICE))!)
-        textFieldProductCategory.text = self.nsManagedObject?.valueForKey(Constants.ATTRIBUTE_PRODUCT_CATEGORY) as? String
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    /** Fetches data from database and sets the textfields of screen with required product object details
+    */
+    func displayProductDetails(){
+        let fetchRequest = NSFetchRequest(entityName: Constants.Entity.ENTITY_PRODUCTS)
+        do {
+            let results = try managedObjectContext.executeFetchRequest(fetchRequest)
+            let products = results as! [Products]
+            if (products.count == 0) {
+                print("No records found")
+            }
+            textFieldProductName.text = products[row].productName
+            textFieldProductPrice.text = String((products[row].productPrice)!)
+            textFieldProductCategory.text = products[row].productCategory
+        }
+        catch let error as NSError  {
+            print("Could not display \(error), \(error.userInfo)")
+        }
     }
     
     @IBAction func buttonAddTapped(sender: AnyObject) {
-        
         let productName = textFieldProductName.text
         let productCategory = textFieldProductCategory.text
         if(!self.isWhitespace(productName!)){
@@ -68,16 +80,12 @@ class AddProductViewController: UIViewController {
             self.navigationController?.popViewControllerAnimated(true)
         }
     }
-    
-    func managedObjectContext() -> NSManagedObjectContext {
-        var context: NSManagedObjectContext!
-        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        if (delegate.performSelector(#selector(managedObjectContext)) != nil) {
-            context = delegate.managedObjectContext
-        }
-        return context
-    }
    
+    //MARK:IsWhitespace
+    /** Checks whether the input is empty or not
+     * param name: input string to be checked
+     * returns false if empty string else returns true
+     */
     func isWhitespace(name: String) -> Bool{
         let trimmedName:String = name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if trimmedName.characters.count == 0 {
@@ -85,36 +93,68 @@ class AddProductViewController: UIViewController {
         }
         return true
     }
+    
+    //MARK:IsAlphabetic
+    /** Checks whether the input is alphabetic only
+     * param name: input string to be checked
+     * returns true if string has alphabets else returns false
+     */
     func isAlphabetic(name: String) -> Bool {
-       return name.rangeOfString("^[a-zA-Z]+$", options: .RegularExpressionSearch) != nil
+       return name.rangeOfString(Constants.RegularExpression.ALPHABETIC_EXPRESSION, options: .RegularExpressionSearch) != nil
     }
     
+    //MARK:IsAlphaNumeric
+    /** Checks whether the input is numeric
+     * param name: input string to be checked
+     * returns true if string is numeric else returns false
+     */
     func isAlphaNumeric(name: String) -> Bool {
-        return name.rangeOfString("[0-9]{2,5}[.]{0,1}[0-9]{0,2}", options: .RegularExpressionSearch) != nil
+        return name.rangeOfString(Constants.RegularExpression.ALPHANUMERIC_EXPRESSION, options: .RegularExpressionSearch) != nil
     }
     
     /** Updates or inserts new object in database
      */
-    func saveProduct(){
-        let context = self.managedObjectContext()
-        if((self.nsManagedObject) != nil){
-//            self.nsManagedObject?.setValue(self.textFieldProductName, forKey: "productName")
-//            self.nsManagedObject?.setValue(Float(self.textFieldProductPrice.text! ), forKey: "productPrice")
-//            self.nsManagedObject?.setValue(self.textFieldProductCategory.text, forKey: "productCategory")
+    func saveProduct() {
+        if (self.showOrUpdateDetails ) {
+            updateDb()
         }
         else{
-            if let entity = NSEntityDescription.entityForName(Constants.ENTITY_PRODUCTS, inManagedObjectContext: context) {
-                let newProduct = Products(entity: entity, insertIntoManagedObjectContext: context)
-                newProduct.setValue(self.textFieldProductName.text, forKey: Constants.ATTRIBUTE_PRODUCT_NAME)
-                newProduct.setValue(Float(self.textFieldProductPrice.text! ), forKey: Constants.ATTRIBUTE_PRODUCT_PRICE)
-                newProduct.setValue(self.textFieldProductCategory.text, forKey: Constants.ATTRIBUTE_PRODUCT_CATEGORY)
-            }
+            insertObjectInDb()
         }
         do{
-            try  context.save()
+            try  managedObjectContext.save()
         }
         catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    /** Updates an object in database
+     */
+    func updateDb() {
+        let fetchRequestWithPredicate = NSFetchRequest(entityName: Constants.Entity.ENTITY_PRODUCTS)
+        do {
+            let result = try managedObjectContext.executeFetchRequest(fetchRequestWithPredicate)
+            let product = result as! [Products]
+            let updatedproduct = product[row]
+            updatedproduct.productName = self.textFieldProductName.text
+            updatedproduct.productPrice = Float(self.textFieldProductPrice.text!)
+            updatedproduct.productCategory = self.textFieldProductCategory.text
+            try managedObjectContext.save()
+        }
+        catch let error as NSError {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    /** Inserts new object in database
+     */
+    func insertObjectInDb() {
+        if let entity = NSEntityDescription.entityForName(Constants.Entity.ENTITY_PRODUCTS, inManagedObjectContext: managedObjectContext) {
+            let newProduct = Products(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
+            newProduct.productName = self.textFieldProductName.text
+            newProduct.productPrice = Float(self.textFieldProductPrice.text!)
+            newProduct.productCategory = self.textFieldProductCategory.text
         }
     }
 }

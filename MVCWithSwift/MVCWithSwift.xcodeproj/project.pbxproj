@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F43383A11D9C5255004AA429 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43383A01D9C5255004AA429 /* Constants.swift */; };
-		F43383A31D9C560E004AA429 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43383A21D9C560E004AA429 /* TableViewCell.swift */; };
-		F43383A51D9C5691004AA429 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43383A41D9C5691004AA429 /* TableViewCell.xib */; };
+		F43383A31D9C560E004AA429 /* CustomProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43383A21D9C560E004AA429 /* CustomProductViewCell.swift */; };
+		F43383A51D9C5691004AA429 /* CustomProductViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F43383A41D9C5691004AA429 /* CustomProductViewCell.xib */; };
 		F4D2793A1D9B3878000E33D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D279391D9B3878000E33D3 /* AppDelegate.swift */; };
 		F4D2793F1D9B3878000E33D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4D2793D1D9B3878000E33D3 /* Main.storyboard */; };
 		F4D279441D9B3878000E33D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4D279431D9B3878000E33D3 /* Assets.xcassets */; };
@@ -25,8 +25,8 @@
 
 /* Begin PBXFileReference section */
 		F43383A01D9C5255004AA429 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Constants/Constants.swift; sourceTree = "<group>"; };
-		F43383A21D9C560E004AA429 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = Models/TableViewCell.swift; sourceTree = "<group>"; };
-		F43383A41D9C5691004AA429 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TableViewCell.xib; path = Models/TableViewCell.xib; sourceTree = "<group>"; };
+		F43383A21D9C560E004AA429 /* CustomProductViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomProductViewCell.swift; path = Models/CustomProductViewCell.swift; sourceTree = "<group>"; };
+		F43383A41D9C5691004AA429 /* CustomProductViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomProductViewCell.xib; path = Models/CustomProductViewCell.xib; sourceTree = "<group>"; };
 		F4D279361D9B3878000E33D3 /* MVCWithSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVCWithSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4D279391D9B3878000E33D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4D2793E1D9B3878000E33D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -98,8 +98,8 @@
 		F4D279511D9B39A5000E33D3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F43383A41D9C5691004AA429 /* TableViewCell.xib */,
-				F43383A21D9C560E004AA429 /* TableViewCell.swift */,
+				F43383A41D9C5691004AA429 /* CustomProductViewCell.xib */,
+				F43383A21D9C560E004AA429 /* CustomProductViewCell.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -180,7 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4D2794F1D9B394B000E33D3 /* Info.plist in Resources */,
-				F43383A51D9C5691004AA429 /* TableViewCell.xib in Resources */,
+				F43383A51D9C5691004AA429 /* CustomProductViewCell.xib in Resources */,
 				F4D279471D9B3878000E33D3 /* LaunchScreen.storyboard in Resources */,
 				F4D279441D9B3878000E33D3 /* Assets.xcassets in Resources */,
 				F4D279581D9B457B000E33D3 /* Default-568h@2x.png in Resources */,
@@ -195,7 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F43383A31D9C560E004AA429 /* TableViewCell.swift in Sources */,
+				F43383A31D9C560E004AA429 /* CustomProductViewCell.swift in Sources */,
 				F4D279531D9B43EF000E33D3 /* ListProductsViewController.swift in Sources */,
 				F4D2795B1D9B45CF000E33D3 /* MVCWithSwift.xcdatamodeld in Sources */,
 				F43383A11D9C5255004AA429 /* Constants.swift in Sources */,

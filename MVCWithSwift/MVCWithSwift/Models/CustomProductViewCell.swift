@@ -6,13 +6,8 @@
 //  Copyright © 2016 komal lunkad. All rights reserved.
 //
 import UIKit
-class TableViewCell: UITableViewCell {
 
-    
+class CustomProductViewCell: UITableViewCell {
     @IBOutlet var labelProductName: UILabel!
-    
     @IBOutlet var labelProductPrice: UILabel!
-    
-    //@IBOutlet var labelProductPrice: UILabel!
-    //@IBOutlet var labelProductName: UILabel!
 }
