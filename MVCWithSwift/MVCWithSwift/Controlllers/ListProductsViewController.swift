@@ -19,6 +19,9 @@ class ListProductsViewController: UIViewController,UITableViewDelegate,UITableVi
         super.viewDidLoad()
         let addProduct = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(ListProductsViewController.navigateToAddProductsScreen))
         self.navigationItem.rightBarButtonItem = addProduct
+        tableViewProducts.estimatedRowHeight = 90
+        tableViewProducts.rowHeight = UITableViewAutomaticDimension
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -48,9 +51,12 @@ class ListProductsViewController: UIViewController,UITableViewDelegate,UITableVi
         return arrayProducts.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        return 90;
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
+//        return 90
+//    }
+//    func tableView(tableView: UITableView, estimatedHeightForRowAt indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let customCellIdentifier = Constants.StoryBoardID.TABLE_VIEW_CELL ;

@@ -19,7 +19,7 @@ class Constants {
         static let TABLE_VIEW_CELL = "CustomProductViewCell"
     }
     struct showButtonText {
-        static let SHOW_TEXT = "Ok"
+        static let SHOW_TEXT = "Update"
     }
     struct RegularExpression {
         static let ALPHABETIC_EXPRESSION = "^[a-zA-Z]+$"

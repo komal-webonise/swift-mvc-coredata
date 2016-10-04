@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--List Products View Controller-->
@@ -17,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jhE-Dz-enX">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jhE-Dz-enX">
+                                <rect key="frame" x="16" y="0.0" width="288" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="H7m-hV-y02"/>
@@ -27,6 +28,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="jhE-Dz-enX" secondAttribute="trailing" id="0kl-xx-FaW"/>
+                            <constraint firstItem="jhE-Dz-enX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="K6m-vt-UZk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jhE-Dz-enX" secondAttribute="bottom" id="OT1-Xh-834"/>
+                            <constraint firstItem="jhE-Dz-enX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="TDi-UI-TOo"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bnS-WJ-ug5"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -69,26 +76,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUQ-TP-ffZ">
-                                <rect key="frame" x="59" y="104" width="219" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="4CW-VD-26y"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O6X-tO-4wK">
-                                <rect key="frame" x="59" y="172" width="219" height="30"/>
+                                <rect key="frame" x="36" y="150" width="248" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h4Z-HI-fzz">
-                                <rect key="frame" x="59" y="237" width="219" height="30"/>
+                                <rect key="frame" x="36" y="230" width="248" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daY-s2-0Bm">
-                                <rect key="frame" x="106" y="322" width="119" height="56"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daY-s2-0Bm">
+                                <rect key="frame" x="36" y="310" width="248" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.97722739359999999" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -97,23 +96,29 @@
                                     <action selector="buttonAddTapped:" destination="i93-d7-aEV" eventType="touchUpInside" id="V3q-UA-9Ns"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Product Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UUQ-TP-ffZ">
+                                <rect key="frame" x="36" y="70" width="248" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UUQ-TP-ffZ" firstAttribute="top" secondItem="tSb-2I-1dC" secondAttribute="bottom" constant="84" id="00H-7b-2AD"/>
-                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="top" secondItem="O6X-tO-4wK" secondAttribute="bottom" constant="35" id="BH7-aD-QsE"/>
-                            <constraint firstItem="O6X-tO-4wK" firstAttribute="top" secondItem="UUQ-TP-ffZ" secondAttribute="bottom" constant="38" id="Fqz-Vk-1Mx"/>
-                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="height" secondItem="O6X-tO-4wK" secondAttribute="height" id="Id7-Ck-IjN"/>
-                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="leading" secondItem="O6X-tO-4wK" secondAttribute="leading" id="PAX-Vo-W8D"/>
-                            <constraint firstItem="O6X-tO-4wK" firstAttribute="height" secondItem="UUQ-TP-ffZ" secondAttribute="height" id="VRt-w4-2sk"/>
-                            <constraint firstItem="daY-s2-0Bm" firstAttribute="trailing" secondItem="h4Z-HI-fzz" secondAttribute="trailing" id="X5z-3e-eYK"/>
-                            <constraint firstItem="daY-s2-0Bm" firstAttribute="leading" secondItem="h4Z-HI-fzz" secondAttribute="leading" id="c4q-ZP-ApD"/>
-                            <constraint firstAttribute="trailing" secondItem="UUQ-TP-ffZ" secondAttribute="trailing" constant="42" id="dXa-Zr-Dmo"/>
-                            <constraint firstItem="UUQ-TP-ffZ" firstAttribute="leading" secondItem="kbZ-P4-BK4" secondAttribute="leading" constant="59" id="hHb-Ca-rpF"/>
-                            <constraint firstItem="O6X-tO-4wK" firstAttribute="leading" secondItem="UUQ-TP-ffZ" secondAttribute="leading" id="lLk-04-8Qy"/>
-                            <constraint firstItem="O6X-tO-4wK" firstAttribute="trailing" secondItem="UUQ-TP-ffZ" secondAttribute="trailing" id="nCh-Lu-9IM"/>
-                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="trailing" secondItem="O6X-tO-4wK" secondAttribute="trailing" id="oby-CD-5zL"/>
-                            <constraint firstItem="daY-s2-0Bm" firstAttribute="top" secondItem="h4Z-HI-fzz" secondAttribute="bottom" constant="55" id="zNY-GG-ehZ"/>
+                            <constraint firstItem="daY-s2-0Bm" firstAttribute="leading" secondItem="h4Z-HI-fzz" secondAttribute="leading" id="0ab-Ig-f3t"/>
+                            <constraint firstItem="daY-s2-0Bm" firstAttribute="top" secondItem="h4Z-HI-fzz" secondAttribute="bottom" constant="50" id="2Lp-MF-HDs"/>
+                            <constraint firstItem="O6X-tO-4wK" firstAttribute="top" secondItem="UUQ-TP-ffZ" secondAttribute="bottom" constant="50" id="5Ye-tI-i1H"/>
+                            <constraint firstItem="O6X-tO-4wK" firstAttribute="height" secondItem="UUQ-TP-ffZ" secondAttribute="height" id="7uY-15-RlI"/>
+                            <constraint firstItem="O6X-tO-4wK" firstAttribute="trailing" secondItem="UUQ-TP-ffZ" secondAttribute="trailing" id="84b-Uh-FfS"/>
+                            <constraint firstItem="UUQ-TP-ffZ" firstAttribute="leading" secondItem="kbZ-P4-BK4" secondAttribute="leadingMargin" constant="20" id="9MY-ym-jJk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UUQ-TP-ffZ" secondAttribute="trailing" constant="20" id="JYF-vJ-7y8"/>
+                            <constraint firstItem="daY-s2-0Bm" firstAttribute="height" secondItem="h4Z-HI-fzz" secondAttribute="height" id="PLP-sU-eDC"/>
+                            <constraint firstItem="UUQ-TP-ffZ" firstAttribute="top" secondItem="tSb-2I-1dC" secondAttribute="bottom" constant="50" id="XAG-zq-Nl0"/>
+                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="leading" secondItem="O6X-tO-4wK" secondAttribute="leading" id="Z3B-GZ-LNC"/>
+                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="height" secondItem="O6X-tO-4wK" secondAttribute="height" id="nqv-VH-TgQ"/>
+                            <constraint firstItem="O6X-tO-4wK" firstAttribute="leading" secondItem="UUQ-TP-ffZ" secondAttribute="leading" id="o4W-zo-qiG"/>
+                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="top" secondItem="O6X-tO-4wK" secondAttribute="bottom" constant="50" id="qtU-ad-pNW"/>
+                            <constraint firstItem="daY-s2-0Bm" firstAttribute="trailing" secondItem="h4Z-HI-fzz" secondAttribute="trailing" id="u2e-r2-nt6"/>
+                            <constraint firstItem="h4Z-HI-fzz" firstAttribute="trailing" secondItem="O6X-tO-4wK" secondAttribute="trailing" id="zmu-5C-wkk"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

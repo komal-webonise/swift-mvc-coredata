@@ -14,19 +14,46 @@
                 <rect key="frame" x="0.0" y="0.0" width="407" height="108"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CV-2c-lY1">
-                        <rect key="frame" x="17" y="62" width="126" height="29"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dS-Ov-q76">
-                        <rect key="frame" x="17" y="8" width="254" height="38"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mBm-FE-BRu">
+                        <rect key="frame" x="0.0" y="0.0" width="407" height="108"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Labeldsiudyhfrhbhegyrfgjdhvefvbcffhfhhfhhfhhhhjfhfhdhdhfj" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dS-Ov-q76">
+                                <rect key="frame" x="10" y="67" width="379" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="9eG-fe-1CE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labelkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CV-2c-lY1">
+                                <rect key="frame" x="10" y="10" width="379" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="uQ7-rU-c1G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9CV-2c-lY1" secondAttribute="trailing" constant="18" id="MJQ-f8-gj3"/>
+                            <constraint firstItem="9dS-Ov-q76" firstAttribute="top" secondItem="9CV-2c-lY1" secondAttribute="bottom" constant="16" id="O5m-aU-3by"/>
+                            <constraint firstItem="9CV-2c-lY1" firstAttribute="top" secondItem="mBm-FE-BRu" secondAttribute="top" constant="10" id="PDq-U6-D5o"/>
+                            <constraint firstItem="9CV-2c-lY1" firstAttribute="leading" secondItem="mBm-FE-BRu" secondAttribute="leading" constant="10" id="aHw-7G-K9A"/>
+                            <constraint firstAttribute="bottom" secondItem="9dS-Ov-q76" secondAttribute="bottom" constant="10" id="j9a-Yr-ja2"/>
+                            <constraint firstItem="9dS-Ov-q76" firstAttribute="leading" secondItem="9CV-2c-lY1" secondAttribute="leading" id="u2f-rd-Mr3"/>
+                            <constraint firstItem="9dS-Ov-q76" firstAttribute="trailing" secondItem="9CV-2c-lY1" secondAttribute="trailing" id="w23-gn-yUt"/>
+                        </constraints>
+                    </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="mBm-FE-BRu" secondAttribute="bottom" id="34L-Dd-j4W"/>
+                    <constraint firstItem="mBm-FE-BRu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Kid-nb-YwW"/>
+                    <constraint firstAttribute="trailing" secondItem="mBm-FE-BRu" secondAttribute="trailing" id="R8Z-Qg-5dh"/>
+                    <constraint firstItem="mBm-FE-BRu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rdO-vI-xyY"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="labelProductName" destination="9dS-Ov-q76" id="04u-Zo-TA4"/>
